@@ -1,0 +1,23 @@
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* tmp */
+  gap: 1rem;
+}
+
+@media only screen and (max-width: 900px) {
+  .cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+.list {
+  padding-left: clamp(1.25rem, 1.765vw + 0.588rem, 2rem);
+}
+
+.list li {
+  margin-bottom: 0.5rem;
+}
+
+.list :last-child {
+  margin-bottom: 0;
+}

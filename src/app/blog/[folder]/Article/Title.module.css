@@ -1,0 +1,8 @@
+.title {
+  width: 100%;
+  height: min-content;
+  max-width: 65rem;
+  padding: 2rem;
+  padding-bottom: 0;
+  padding-top: max(5vw, 2rem);
+}

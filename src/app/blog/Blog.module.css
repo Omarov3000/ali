@@ -1,0 +1,57 @@
+.blog {
+  padding: 1rem;
+}
+
+.about {
+  font-size: clamp(1rem, 0.513vw + 0.84rem, 1.25rem);
+  line-height: clamp(1.6rem, 0.821vw + 1.344rem, 2rem);
+  max-width: 800px;
+  margin: 2rem 0;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  display: block;
+  width: 500px;
+  padding: 1rem 1.5rem;
+  border-radius: 28px;
+  text-decoration: none;
+  background-color: var(--bg);
+  color: var(--color);
+}
+
+.card h3 {
+  font-size: clamp(1.5rem, 0.882vw + 1.169rem, 1.875rem);
+  line-height: clamp(2.25rem, 0.441vw + 2.085rem, 2.438rem);
+  margin-bottom: 0.5rem;
+  letter-spacing: 1.1px;
+}
+
+.card img {
+  float: right;
+  width: 200px;
+}
+
+@media only screen and (max-width: 700px) {
+  .card {
+    width: 100%;
+  }
+
+  .card img {
+    float: unset;
+    width: 150px;
+    margin: 0 auto;
+  }
+}
+
+.warning {
+  background-color: #6d0f0f;
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  margin-top: 1rem;
+}

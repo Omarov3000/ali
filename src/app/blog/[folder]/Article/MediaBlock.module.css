@@ -1,0 +1,20 @@
+.caption {
+  font-size: clamp(0.813rem, 0.441vw + 0.647rem, 1rem); /* 13px - 16px */
+  line-height: clamp(1.219rem, 0.191vw + 1.147rem, 1.3rem);
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+.rounded {
+  border-radius: 28px;
+}
+
+.img {
+  width: var(--width);
+}
+
+@media only screen and (max-width: 900px) {
+  .img {
+    width: auto;
+  }
+}

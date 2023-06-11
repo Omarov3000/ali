@@ -1,0 +1,106 @@
+.wrapper {
+  --gradient: linear-gradient(45deg, #f2df0d 0%, #b0eb00 25%, #18f20d 50%, #00f58f 75%, #0df2cc 100%);
+  --color: #9dfd96;
+  --bg: #010e00;
+  --color-em: #67fddb;
+  --bg-em: #10322a;
+  color: var(--color);
+  background: var(--bg);
+}
+
+.article {
+  padding: 1rem;
+}
+
+.article > * {
+  width: min(100%, 50rem);
+}
+
+.blocks {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 0.588vw + 0.779rem, 1.25rem);
+}
+
+/* https://fluidtypography.com/#app-get-started */
+/* p .callout, ul */
+.p {
+  font-size: clamp(1rem, 0.513vw + 0.84rem, 1.25rem);
+  line-height: clamp(1.6rem, 0.821vw + 1.344rem, 2rem);
+}
+
+.article h2 {
+  padding-top: 1.25rem;
+  font-size: clamp(1.75rem, 1.026vw + 1.429rem, 2.25rem);
+}
+
+.article h3 {
+  padding-top: 1rem;
+  font-size: clamp(1.5rem, 0.769vw + 1.26rem, 1.875rem);
+}
+
+.article h4 {
+  padding-top: 0.5rem;
+  font-size: clamp(1.25rem, 0.513vw + 1.09rem, 1.5rem);
+}
+
+.wrapper h2,
+.wrapper h3,
+.wrapper h4 {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
+  font-weight: 1000;
+  letter-spacing: 1.1px;
+  translate: 0px 10%;
+}
+
+.article em {
+  color: var(--color-em);
+  background: var(--bg-em);
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 900px) {
+  .article em {
+    padding: 0.1rem 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  font-weight: 900;
+  color: white;
+}
+
+.back {
+  text-decoration: none;
+  padding: 1rem;
+  padding-bottom: 0;
+}
+
+.back svg {
+  transition: transform 0.2s ease-in-out;
+}
+
+.back:hover svg {
+  transform: translateX(-0.25rem);
+}
+
+.back:active svg {
+  transform: translateX(-0.5rem);
+}
+
+.reading {
+  font-weight: 900;
+  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  letter-spacing: 0.7px;
+}

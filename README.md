@@ -1,34 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Write each article in a dedicated folder (every file contains article color):
 
-## Getting Started
+snake_case_article_title:
 
-First, run the development server:
+- text.md
+- title.svg
+- icon.svg
+- card.webp
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+Meta info in the beginning of an article:
+
+```
+---
+folder: snake_case_article_title
+readingTime: 10
+gradient: linear-gradient(45deg, #f2df0d 0%, #b0eb00 25%, #18f20d 50%, #00f58f 75%, #0df2cc 100%)
+color: #9dfd96
+bg: #010e00
+colorEm: #67fddb
+bgEm: #10322a
+---
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+preparing title.svg
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Write title in figma, center it and outline as stroke
+2. Paste in title.svg
+3. Delete width and height on svg
+4. Delete all linear gradients but first
+5. Rename path fill to 'gradient'
