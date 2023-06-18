@@ -7,9 +7,7 @@ export function Blog() {
   const cards = listArticles()
   return (
     <div className={css.blog + ' center'}>
-      <div className={css.warning}>
-        WARNING: This blog is under construction. Only the lean language learning article is ready for reading.
-      </div>
+      <div className={css.warning}>WARNING: This blog is under construction. Some articles may be in draft form.</div>
       <p className={css.about}>{about}</p>
 
       <div className={css.cards}>

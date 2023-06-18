@@ -1,17 +1,15 @@
 import { Article } from './Article/Article'
 import { s } from '../../../types'
 import { Metadata, ResolvingMetadata } from 'next'
-import { getArticle, getArticleIcon, getArticleTitle, listArticleFolders } from './articleApi'
+import { _getArticle, getArticle, getArticleIcon, getArticleTitle, listArticleFolders } from './articleApi'
+import { Debug } from './Article/Debug'
 
 type Params = { folder: s }
 type Props = { params: { folder: s } }
 
 export default function ArticlePage({ params }: Props) {
-  return (
-    <div>
-      <Article {...getArticle(params.folder)} folder={params.folder} />
-    </div>
-  )
+  // return <Debug md={_getArticle(params.folder)} />
+  return <Article {...getArticle(params.folder)} folder={params.folder} />
 }
 
 export const generateStaticParams = () => listArticleFolders().map((folder): Params => ({ folder }))

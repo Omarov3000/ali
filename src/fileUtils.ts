@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { O, b, s, ss } from './types'
+import { b, s, ss } from './types'
 
 export function nestedDirs(root: s, o?: { recursive?: b; fullPath?: b }) {
   let dirs = [] as ss
@@ -16,14 +16,4 @@ export function nestedDirs(root: s, o?: { recursive?: b; fullPath?: b }) {
   })
 
   return dirs
-}
-
-export function parseYml(yml: s) {
-  const lines = yml.trim().split('\n')
-  const data = {} as O
-  for (const line of lines) {
-    const [key, value] = line.split(': ')
-    data[key] = value
-  }
-  return data
 }

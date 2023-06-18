@@ -1,6 +1,6 @@
 import { BlockD, BlockDs, BlockProps, BlocksProps, CardsData, GridData, isLayout } from './block'
 import css from './Article.module.css'
-import { s } from '../../../../types'
+import { O, s } from '../../../../types'
 import { MediaBlock } from './MediaBlock'
 import { LayoutBlock } from './LayoutBlock'
 import { Cards } from './Cards'
@@ -8,31 +8,22 @@ import { Title } from './Title'
 import { CSSProperties, SVGProps } from 'react'
 import { Meta } from '../metaParser'
 import { CodeBlock } from './CodeBlock/CodeBlock'
+import { Debug } from './Debug'
 
 interface Article {
   blocks: BlockDs
   meta: Meta
+  card: s
   cards: CardsData
   folder: s
 }
 
-export function Article({ blocks, meta, cards, folder }: Article) {
+export function Article({ blocks, meta, cards, folder, card }: Article) {
+  // return <Blocks blocks={blocks} folder={folder} />
   return (
-    <div
-      className={css.wrapper}
-      style={
-        {
-          '--gradient': meta.gradient,
-          '--color': meta.color,
-          '--bg': meta.bg,
-          '--color-em': meta.colorEm,
-          '--bg-em': meta.bgEm,
-        } as CSSProperties
-      }
-    >
-      {/* <RenderTitle /> */}
+    <div className={css.wrapper} style={setVars(meta)}>
       <Back />
-      <Title folder={meta.folder} />
+      <Title folder={meta.folder} card={card} scaleDown={meta.titleScaleDown} />
       <div className={'center ' + css.reading}>Reading time: ~{meta.readingTime} min</div>
       <article className={`${css.article} center`}>
         <Blocks blocks={blocks} folder={folder} />
@@ -43,6 +34,17 @@ export function Article({ blocks, meta, cards, folder }: Article) {
       </div>
     </div>
   )
+}
+
+function setVars(meta: Meta) {
+  const r = { '--gradient': meta.gradient, '--color': meta.color, '--bg': meta.bg } as O
+  if (meta.colorEm) r['--color-em'] = meta.colorEm
+  if (meta.bgEm) r['--bg-em'] = meta.bgEm
+
+  if (meta.codeHue) r['--code-hue'] = meta.codeHue
+  else r['--code-hue'] = '140'
+
+  return r as CSSProperties
 }
 
 function Back(p: { s?: CSSProperties }) {

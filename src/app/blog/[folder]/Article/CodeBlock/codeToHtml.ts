@@ -1,8 +1,12 @@
 import { s } from '@/types'
 import hljs from 'highlight.js/lib/core'
 import typescript from 'highlight.js/lib/languages/typescript'
+import xml from 'highlight.js/lib/languages/xml'
+import plaintext from 'highlight.js/lib/languages/plaintext'
+
+hljs.registerLanguage('xml', xml)
 hljs.registerLanguage('typescript', typescript)
-import 'highlight.js/styles/github.css'
+hljs.registerLanguage('txt', typescript)
 
 // considered highlight.js prismjs shiki (astro's default highlighter)
 // prism v2 is in development, but it's stuck

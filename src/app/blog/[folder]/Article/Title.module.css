@@ -1,8 +1,24 @@
 .title {
   width: 100%;
   height: min-content;
-  max-width: 65rem;
   padding: 2rem;
   padding-bottom: 0;
-  padding-top: max(5vw, 2rem);
+}
+
+.card {
+  padding-top: 1rem;
+  width: max(20vw, 150px);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

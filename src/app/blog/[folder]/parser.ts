@@ -2,29 +2,29 @@ import { O, n, ns, s, ss } from '../../../types'
 import { marked } from 'marked'
 import { safeSplit, uuid } from '../../../utils'
 import { BlockD, CodeData, MediaData, BlockDs, GridData, CardsData, LinkCard } from './Article/block'
-import { getArticleCard, getArticleMeta } from './articleApi'
 import { codeToHtml } from './Article/CodeBlock/codeToHtml'
-import { parseYml } from '@/fileUtils'
 import { splitMetaAndMD } from './metaParser'
 
 // considered: marked mdpjs markdown-it showdown commonmark remarkable pagedown (https://umemotoctrl.github.io/mdpjs/)
 // syntax: https://www.markdownguide.org/
 
-export function parse(mdWithMeta: s) {
+export function parse(mdWithMeta: s, debug = false) {
   const { md, meta } = splitMetaAndMD(mdWithMeta)
 
   const raw = tokensToBlocks(marked.lexer(md, { sanitize: false }))
   const removedTrash = raw.filter((b) => b.t !== 'trash')
+  if (debug) debugger
   const withGrids = assembleGrids(removedTrash)
 
-  const cards = withGrids.find((b) => b.t === 'cards')
-  const cardsData = cards ? (cards.data as CardsData) : []
-  const rest = withGrids.filter((b) => b.t !== 'cards')
+  const cleanText = JSON.parse(unescape(JSON.stringify(withGrids))) as BlockDs // marked escapes some characters (defined in helpers.js) couldn't turn off :(
+  cleanText
+    .filter((b) => b.t === 'code')
+    .forEach((b) => {
+      const { code, lang } = b.data as CodeData
+      b.data = codeToHtml(code, lang)
+    })
 
-  const cleanText = JSON.parse(unescape(JSON.stringify(rest))) as BlockDs // marked escapes some characters (defined in helpers.js) couldn't turn off :(
-  cleanText.filter((b) => b.t === 'code').forEach((b) => (b.data = codeToHtml((b.data as CodeData).code)))
-
-  return { blocks: cleanText, meta, cards: cardsData }
+  return { blocks: cleanText, meta }
 }
 
 // from marked/helpers.js
@@ -115,7 +115,7 @@ function tokenToBlock(token: marked.Token): BlockD {
 }
 
 function parseCode(id: s, code: s, lang = ''): BlockD {
-  if (lang.startsWith('u ')) return parseCards(id, code)
+  if (lang.startsWith('u ')) return { id, t: 'cards', data: code }
   const data: CodeData = { lang, code }
   return { id, t: 'code', data }
 }
@@ -154,7 +154,7 @@ function assembleGrids(blocks: BlockDs) {
     if (block.t === 'grid') {
       const cols = groupColumns(blocks, i + 1)
       block.data = cols.data
-      i = cols.i
+      i = cols.i - 1 // i will be incremented by for loop
       idsToDelete.push(...cols.idsToDelete)
     }
   }
@@ -182,22 +182,4 @@ function groupColumns(blocks: BlockDs, startFrom: n) {
   columns = columns.filter((c) => c.length)
   const data: GridData = columns.map((c) => ({ column: c }))
   return { data, idsToDelete, i }
-}
-
-const parseCards = (id: s, yml: s): BlockD => ({ id, t: 'cards', data: safeSplit(yml, '\n\n').map(parseCard) })
-function parseCard(yml: s) {
-  const r = parseYml(yml) as LinkCard
-  const inner = !r.to.startsWith('http')
-  if (inner) {
-    r.inner = true
-
-    const meta = getArticleMeta(r.to)
-    r.color = meta.colorCard
-    r.bg = meta.bgCard
-
-    r.img = getArticleCard(r.to)
-
-    r.to = '/blog/' + r.to // should be the last line to access `to` safely
-  }
-  return r
 }

@@ -20,12 +20,13 @@
   display: flex;
   flex-direction: column;
   gap: clamp(1rem, 0.588vw + 0.779rem, 1.25rem);
+  min-width: 0; /* common-fix for <pre> stretching wider its parent, ignoring overflow. */
 }
 
 /* https://fluidtypography.com/#app-get-started */
 /* p .callout, ul */
 .p {
-  font-size: clamp(1rem, 0.513vw + 0.84rem, 1.25rem);
+  font-size: clamp(1rem, 0.462vw + 0.88rem, 1.25rem);
   line-height: clamp(1.6rem, 0.821vw + 1.344rem, 2rem);
 }
 
@@ -100,7 +101,7 @@
 
 .reading {
   font-weight: 900;
+  padding-top: 1.5rem; /* check Edge BaaS when changing */
   padding-bottom: 1rem;
-  padding-top: 0.5rem;
   letter-spacing: 0.7px;
 }

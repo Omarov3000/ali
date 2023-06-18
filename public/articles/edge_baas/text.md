@@ -2,18 +2,17 @@
 folder: edge_baas
 title: Edge BaaS
 readingTime: 5
-description: In this article, I will be showcasing my offline-first, full-stack framework that makes developing web applications quick and straightforward.
+description: In this article, I will be showcasing my offline-first, full-stack framework that makes developing web applications quick and straightforward. This framework comes with a variety of tools to implement complex client-server interactions such as real-time data queries, push notifications, full-text search and efficient file uploads
 i: 3
-gradient: linear-gradient(45deg, #f2df0d 0%, #b0eb00 25%, #18f20d 50%, #00f58f 75%, #0df2cc 100%)
-color: #9dfd96
-bg: #010e00
+gradient: linear-gradient(45deg, #ae80ff 0%, #cb48e5 25%, #e750ce 50%, #f75eba 75%, #ff75ac 100%)
+color: oklch(86.2% 0.106 323)
+bg: oklch(14.5% 0.068 323)
 colorCard: #fabfff
 bgCard: #2b0030
-colorEm: #67fddb
-bgEm: #10322a
+colorEm: oklch(86.2% 0.08 360)
+bgEm: oklch(22.3% 0.08 360)
+titleScaleDown: 1.5
 ---
-
-# Overview
 
 In this article, I will be showcasing my offline-first, full-stack framework that makes developing web applications quick and straightforward. This framework comes with a variety of tools to implement:
 
@@ -114,7 +113,7 @@ To prevent security vulnerabilities, rules can be implemented that run before ea
 const securityRules: Rules = {
   cat: async ({ user, query, db }) => {
     if (query.type === 'read') return
-    if (!user.roles.includes('editor')) throw new Error('Only editors can edit cats')
+    if (!user.roles.includes('editor')) throw new Error('Not an editor')
     if (query.data?.age > 20) throw new Error('Age is too high')
     if (query.data.owner) {
       const oldOwner = await db.get('cat', query.data.id)

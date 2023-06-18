@@ -1,4 +1,4 @@
-import { parseYml } from '@/fileUtils'
+import { parseYml } from '@/parsingUtils'
 import { s } from '@/types'
 import { safeSplit } from '@/utils'
 
@@ -15,14 +15,18 @@ export interface Meta {
   bgCard: s
   colorEm?: s
   bgEm?: s
+  codeHue?: s
+  titleScaleDown?: s
 }
 
 export function splitMetaAndMD(md: s) {
-  let meta = ''
+  let metaS = ''
   if (md.startsWith('---')) {
     const [m, ...rest] = safeSplit(md, '---')
-    meta = m
+    metaS = m
     md = rest.join('---')
   }
-  return { meta: parseYml(meta) as Meta, md }
+  const meta = parseYml(metaS) as Meta
+  meta.codeHue = meta.color.split(' ').at(-1)?.replace(')', '')
+  return { meta, md }
 }

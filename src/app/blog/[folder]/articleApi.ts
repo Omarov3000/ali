@@ -1,15 +1,18 @@
-import { nestedDirs, parseYml } from '@/fileUtils'
+import { nestedDirs } from '@/fileUtils'
+import { parseYml } from '@/parsingUtils'
 import { n, s, ss } from '@/types'
-import { capitalize, sort } from '@/utils'
+import { capitalize, safeSplit, sort } from '@/utils'
 import fs from 'fs'
 import path from 'path'
 import { parse } from './parser'
 import { Meta, splitMetaAndMD } from './metaParser'
+import { BlockDs, CardsData, LinkCard } from './Article/block'
 
 const publicDir = path.join(process.cwd(), 'public')
 const articlesDir = path.join(publicDir, 'articles')
 
-export const getArticle = (folder: s) => parse(getArticlePart(folder, 'text.md'))
+export const _getArticle = (folder: s) => getArticlePart(folder, 'text.md') // for debug
+export const getArticle = (folder: s) => parseCards(parse(getArticlePart(folder, 'text.md')), folder)
 export const getArticleTitle = (folder: s) => capitalize(unslugify(folder))
 export const getArticleTitleSvg = (folder: s) => getArticlePart(folder, 'title.svg')
 export const getArticleIcon = (folder: s) => `/articles/${folder}/icon.svg`
@@ -45,4 +48,35 @@ function metaToArticle(m: Meta): Article {
     color: m.colorCard,
     i: +m.i,
   }
+}
+
+// parseCards interacts with api, placed it here to make parser debuggable on client
+// trying to avoid circular dependencies
+
+export function parseCards(parsed: { blocks: BlockDs; meta: Meta }, folder: s) {
+  const cards = parsed.blocks.find((b) => b.t === 'cards')
+  if (!cards) return { ...parsed, cards: [], card: getArticleCard(folder) }
+
+  const rest = parsed.blocks.filter((b) => b.t !== 'cards')
+  cards.data = safeSplit(cards.data as s, '\n\n').map(parseCard)
+  const cardsData = cards ? (cards.data as CardsData) : []
+
+  return { blocks: rest, meta: parsed.meta, cards: cardsData, card: getArticleCard(folder) }
+}
+
+function parseCard(yml: s) {
+  const r = parseYml(yml) as LinkCard
+  const inner = !r.to.startsWith('http')
+  if (inner) {
+    r.inner = true
+
+    const meta = getArticleMeta(r.to)
+    r.color = meta.colorCard
+    r.bg = meta.bgCard
+
+    r.img = getArticleCard(r.to)
+
+    r.to = '/blog/' + r.to // should be the last line to access `to` safely
+  }
+  return r
 }

@@ -1,0 +1,120 @@
+.hljs {
+  --pd: 1.5rem;
+  width: calc(100% + var(--pd) * 2); /* Compensate for the 1rem padding on both sides */
+  margin-left: calc(var(--pd) * -1);
+  margin-right: calc(var(--pd) * -1);
+  padding: 1rem var(--pd);
+  overflow-x: auto; /* Will provide a horizontal scrollbar if necessary */
+  white-space: pre; /* Will keep whitespace/formatting in text */
+  border-radius: 16px;
+  font-size: clamp(0.813rem, 0.462vw + 0.693rem, 1.063rem); /* default 13px */
+}
+
+@media only screen and (max-width: 800px) {
+  .hljs {
+    --pd: 1rem;
+    border-radius: 0;
+  }
+}
+
+/*https://github.com/highlightjs/highlight.js/blob/main/src/styles/github-dark.css */
+
+.hljs {
+  color: oklch(85% 0.055 var(--code-hue)); /* 85.7 vars, jsx, braces, params */
+  background: oklch(18% 0.055 var(--code-hue)); /* default: 17.6 */
+}
+
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  color: #96d17f; /* 80 */
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  color: #ff7b72; /* 73.5 */
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  color: #79c0ff; /* 78.6 */
+}
+
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string,
+.hljs-built_in,
+.hljs-symbol {
+  color: #e8b541;
+}
+
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  color: #8b949e;
+}
+
+/* I don't know what goes below */
+
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  color: #7ee787;
+}
+
+.hljs-subst {
+  color: #c9d1d9;
+}
+
+.hljs-section {
+  color: #1f6feb;
+  font-weight: bold;
+}
+
+.hljs-bullet {
+  color: #f2cc60;
+}
+
+.hljs-emphasis {
+  color: #c9d1d9;
+  font-style: italic;
+}
+
+.hljs-strong {
+  color: #c9d1d9;
+  font-weight: bold;
+}
+
+.hljs-addition {
+  color: #aff5b4;
+  background-color: #033a16;
+}
+
+.hljs-deletion {
+  color: #ffdcd7;
+  background-color: #67060c;
+}
+
+.hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+  /* params, attributes purposely ignored */
+}
