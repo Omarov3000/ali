@@ -3,7 +3,8 @@ folder: crafting_unique_ui_experiences
 title: Crafting Unique UI Experiences
 readingTime: 5
 description: To build user interfaces in an efficient and consistent way I created a design system and a components library. During its development I focused on innovating and creating unique solutions to the needs of my application to make it stand out and convey its unique identity.
-i: 2
+i: 1
+category: libs
 gradient: linear-gradient(45deg, #38fff2 0%, #00e1ff 25%, #00bbff 50%, #008cff 75%, #7079fd 100%)
 color: oklch(86.1% 0.071 250)
 bg: oklch(14.3% 0.04 250)

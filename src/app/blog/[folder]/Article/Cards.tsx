@@ -2,6 +2,7 @@
 import { s } from '@/types'
 import css from './Cards.module.css'
 import { CardsData, LinkCard } from './block'
+import { ArticleCard } from './ArticleCard'
 import { getArticleMedia } from '../articleApi'
 
 export function Cards(p: { cards: CardsData; folder?: s }) {
@@ -13,30 +14,10 @@ export function Cards(p: { cards: CardsData; folder?: s }) {
       <div className={css.wrapper}>
         <div className={css.cards}>
           {p.cards.map((ps) => (
-            <Card key={ps.to} {...ps} folder={p.folder} />
+            <ArticleCard key={ps.to} {...ps} img={ps.inner || !p.folder ? ps.img : getArticleMedia(p.folder, ps.img)} />
           ))}
         </div>
       </div>
     </>
-  )
-}
-
-interface Card extends LinkCard {
-  folder?: s
-}
-
-function Card(p: Card) {
-  const img = p.inner || !p.folder ? p.img : getArticleMedia(p.folder, p.img)
-  return (
-    <a
-      className={css.card}
-      href={p.to}
-      style={{ color: p.color, background: p.bg }}
-      target={p.inner ? '_self' : '_blank'}
-    >
-      <img src={img} alt="" />
-      <div className={css.header}>{p.title}</div>
-      <div className={css.description}>{p.description}</div>
-    </a>
   )
 }

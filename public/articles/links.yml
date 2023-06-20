@@ -1,0 +1,17 @@
+to: https://www.figma.com/file/a1FeBUTP1wUynV1Y169dz5/Thesis?node-id=0-1
+img: /articles/lean_language_learning/folder.webp
+title: Master Thesis
+description: I built a no-code course creation toolkit, engineered to enhance memory retention. It includes a collaborative WYSIWYG editor that enables users to create interactive and engaging courses and associated flashcards. This toolkit elevates educational experiences by focusing on memory enhancement and learner engagement.
+color: #ffc2ca
+bg: #33010f
+category: big
+i: 2
+
+to: https://omarov3000.github.io/gtd-viz/
+img: /articles/chart.webp
+title: Trends of Terror
+description: In collaboration with a think tank, I conducted a 7-day case study using the Global Terrorist dataset. I implemented interactive 3D data visualizations to help policy makers efficiently interpret complex data. I developed an application that allows exploration of individual countries alongside an interactive presentation showing global trends.
+color: #fdc0b9
+bg: #340203
+category: small
+i: 1

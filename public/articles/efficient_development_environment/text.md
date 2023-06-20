@@ -3,7 +3,8 @@ folder: efficient_development_environment
 title: Efficient Development Environment
 readingTime: 4
 description: I created an environment which allows me to interactively develop and test components of web applications without mocking. It serves as a replacement for Storybook with better integration for my other libraries for both frontend and backend.
-i: 4
+i: 3
+category: libs
 gradient: linear-gradient(45deg, #fd684c 0%, #fa7000 25%, #f5a300 50%, #ebd300 75%, #d9ff1a 100%)
 color: oklch(86.2% 0.133 88)
 bg: oklch(14.32% 0.029 88)

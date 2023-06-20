@@ -19,6 +19,6 @@ export const generateStaticParams = () => listArticleFolders().map((folder): Par
 export async function generateMetadata({ params }: Props) {
   return {
     title: getArticleTitle(params.folder),
-    icons: { icon: getArticleIcon(params.folder) },
+    icons: { icon: getArticleIcon(params.folder) }, // '/articles/edge_baas/icon2.svg' works but '/articles/edge_baas/icon.svg' doesn't
   }
 }

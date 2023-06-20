@@ -8,6 +8,7 @@ export interface Meta {
   readingTime: s
   description: s
   i: s
+  category: 'small' | 'big' | 'libs'
   gradient: s
   color: s
   bg: s

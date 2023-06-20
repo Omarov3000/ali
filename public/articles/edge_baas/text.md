@@ -3,7 +3,8 @@ folder: edge_baas
 title: Edge BaaS
 readingTime: 5
 description: In this article, I will be showcasing my offline-first, full-stack framework that makes developing web applications quick and straightforward. This framework comes with a variety of tools to implement complex client-server interactions such as real-time data queries, push notifications, full-text search and efficient file uploads
-i: 3
+i: 2
+category: libs
 gradient: linear-gradient(45deg, #ae80ff 0%, #cb48e5 25%, #e750ce 50%, #f75eba 75%, #ff75ac 100%)
 color: oklch(86.2% 0.106 323)
 bg: oklch(14.5% 0.068 323)

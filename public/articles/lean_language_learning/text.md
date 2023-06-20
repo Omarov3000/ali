@@ -4,6 +4,7 @@ title: Lean Language Learning
 readingTime: 10
 description: This article describes the results of my five-year experiment in augmenting human thought with computer systems. I demonstrate a prototype of my AI-powered learning platform and explore how it can be used to help people learn languages more effectively.
 i: 1
+category: big
 gradient: linear-gradient(45deg, #f2df0d 0%, #b0eb00 25%, #18f20d 50%, #00f58f 75%, #0df2cc 100%)
 color: oklch(91.03% 0.165 142)
 bg: oklch(14.32% 0.046 142)
