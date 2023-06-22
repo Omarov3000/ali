@@ -19,6 +19,9 @@ export const generateStaticParams = () => listArticleFolders().map((folder): Par
 export async function generateMetadata({ params }: Props) {
   return {
     title: getArticleTitle(params.folder),
-    icons: { icon: getArticleIcon(params.folder) }, // '/articles/edge_baas/icon2.svg' works but '/articles/edge_baas/icon.svg' doesn't
+    icons: { icon: getArticleIcon(params.folder) },
   }
 }
+// Anomaly: chrome
+// '/articles/edge_baas/icon2.svg' works but '/articles/edge_baas/icon.svg' doesn't (localhost)
+// wasn't able to load crafting ui exp icon (but it loads in firefox), but if add ?v=2 to the end of the url, it works
