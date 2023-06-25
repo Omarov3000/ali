@@ -26,6 +26,12 @@ export const listArticles = () => {
   return r
 }
 
+export interface ListArticlesD {
+  big: ArticleBlogInfo[]
+  small: ArticleBlogInfo[]
+  libs: ArticleBlogInfo[]
+}
+
 export const listArticleFolders = () => nestedDirs(ARTICLES)
 export const getArticleMedia = (folder: s, src: s) => `/articles/${folder}/${src}`
 

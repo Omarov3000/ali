@@ -4,7 +4,8 @@ import { listArticles } from './[folder]/articleApi'
 import { Blog } from './Blog'
 
 export default function BlogPage() {
-  return <Blog />
+  const cards = listArticles()
+  return <Blog cards={cards} />
 }
 
 export function generateMetadata(): Metadata {
