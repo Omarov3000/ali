@@ -14,7 +14,7 @@ colorEm: oklch(86.1% 0.067 290)
 bgEm: oklch(22.1% 0.067 290)
 ---
 
-Building consistent and efficient user interfaces can be a daunting task. To address this, I've developed a design system and a components library named `U`. During its development I focused on innovating and creating unique solutions to the needs of my application called `Unni` to make it stand out and convey its unique identity.
+Building consistent and responsive user interfaces can be a daunting task. To address this, I've developed a design system and a components library named `U`. During its development I focused on innovating and creating unique solutions to the needs of my learning platform called `Unni` to make it stand out and convey its unique identity.
 
 ### Features of the `U` System:
 
@@ -33,7 +33,7 @@ The `Unni` application allows users to write rich content including essays, inte
 
 <div class="col" />
 
-Here's a step-by-step guide on how the color palette algorithm works:
+Here's a step-by-step description on how the palette generation algorithm works:
 
 1. Firstly, I quantize the image, reducing its colors to a smaller, manageable set.
 2. Then, I score these colors based on their vibrancy and how much of the image they cover. I can also filter out any colors that are nearly monochrome at this step.
@@ -79,7 +79,7 @@ The smooth and precise animations of variable fonts enhance the responsiveness o
 
 For complex scenarios, I use view transitions—animations for when elements appear, reorder, or disappear. These transitions help reduce cognitive load and perceived latency. The challenge, however, lies in the performance trade-off for animating layout properties.
 
-FLIP (First, Last, Inverse, Play) helps solve this. It's a technique that animates layout changes using transform—a "fast" CSS property. FLIP measures the state before and after a property changes (First and Last), rolls back the state (Inverse), and then animates the change (Play).
+FLIP (First, Last, Inverse, Play) helps solve this. It's a technique that animates layout changes using "fast" CSS property such as `transform`. FLIP measures the state before and after a property changes (First and Last), rolls back the state (Inverse), and then animates the change (Play).
 
 The real beauty of this technique lies in its efficiency; since most browsers can offload transform animations to the GPU, it's significantly faster and more performance-friendly than animating layout properties directly. This means less jank and a more fluid user experience.
 

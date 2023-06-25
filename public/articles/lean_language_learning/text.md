@@ -20,7 +20,7 @@ This article describes the results of my five-year experiment in augmenting huma
 
 The global market for language learning apps is growing due to their affordability and convenience. However, most apps aren't advanced enough for users to become fluent, requiring additional courses. While a small percentage of students use apps, the younger generation increasingly prefers them over live teachers. This puts pressure on tutors who must share income with the platforms they teach on, potentially losing 15-30% of their earnings.
 
-I believe in affordable education for everyone. Therefore, I have built a learning platform that benefits both students and teachers without unethical practices. This platform, which uses modern AI models, can be used for language learning and other industries.
+I believe in affordable education for everyone. Therefore, I have built a learning platform that benefits both students and teachers without unethical practices. This platform, can be used to learn languages as well as other subjects.
 
 ## Learning words
 
@@ -28,9 +28,9 @@ The platform helps users learn vocabulary through an interactive process.
 
 <div class="grid">
 
-First, Users add words and context to their vocabulary notebook from sources like movies. Then they search for and add definitions, giving less emphasis to unimportant ones by clicking the broken heart button.
+First, users add words and their context from sources such as movies to their vocabulary notebook. Then they search for the added words and add definitions to learn. Users can give lower priority to unimportant definitions by clicking the broken heart button.
 
-When a definition is added to users' collections, multiple types of flashcards are created.
+When a definition is added to users' collections, the system generates multiple types of flashcards.
 
 Main types are:
 
@@ -54,7 +54,7 @@ In addition, users can add cards with synonyms, antonyms, cognates, and so on, d
 
 As users practice the main types of cards, they will hear the correct pronunciation each time.
 
-This set of cards allows to achieve elaborate encoding. The richer the associations users have with a word, the better they will remember it. That is why each definition is accompanied by an image created from the example.
+This set of cards enables elaborate encoding. The richer the associations users have with a word, the better they will remember it. Therefore, each definition is accompanied by an image based on it.
 
 The process for learning phrases is similar, except that only Fill and Grasp cards are used.
 
@@ -62,7 +62,7 @@ There are also image occlusion cards. They can be used to learn parts of a whole
 
 Pictures are crucial due to the picture superiority effect, which was discovered in 1971 by the psychologist Allan Paivio. He investigated this effect, demonstrating that pictures and words together are often recalled substantially better than words alone.
 
-The app features a game for learning the top 20,000 most frequent words, with progress tracking and recommendations. Teachers can add word cards to their lessons, and for students below B1 level, teachers can create customized learning tracks.
+The app features a game for learning the top 20,000 most frequent words, with progress tracking and recommendations for independent learners. However, for beginners, teachers can add word cards to their lessons or create customized learning tracks to make the learning process easier.
 
 <img src="20k.webp" alt="20k game component" width="60%" />
 
@@ -73,26 +73,26 @@ This approach of learning words has been tested for English, German, and Japanes
 AI helps students learn words on the platform in various ways:
 
 - AI translates definitions and examples to reduce cognitive load and improve understanding. (Users can practice with or without translations, depending on their confidence level)
-- If a word or phrase isn't in the global index, AI extracts information from online dictionaries and generates images, pronunciations, and usage examples.
+- If a word or phrase isn't in the system yet, AI extracts information from online dictionaries and generates images, pronunciations, and usage examples.
 - AI evaluates pronunciation for Fill and Say cards
 
-Teachers can add word cards to their lessons within the system. If a student's level is below B1, the teacher can create their own word cards so that students are not overwhelmed.
+Teachers can use AI to add personalized card decks to their lessons within the system. If a student's level is below B1, the teacher can create special vocabulary so that the student is not overwhelmed.
 
 ## Memory system and spaced repetition
 
 Memory system and spaced repetition are crucial for learning. Skilled individuals recognize patterns in their field, allowing them to think abstractly and perform better. The platform uses flashcards to present these patterns to novices.
 
-Different card scheduling strategies were explored for spaced repetition. Machine learning-based algorithms showed better performance but reduced user engagement. Users preferred being reminded of forgotten information, which motivated them to use the app.
+Different card scheduling strategies were explored for spaced repetition. Machine learning-based algorithms showed better performance but reduced user engagement. It turns out that users don't care about forgetting if it leads to a significant reduction in repetition. Moreover, users preferred to be reminded of forgotten information, which motivated them to use the app. So I switched from an AI-based scheduler to a more controllable one, allowing users to decide how often to repeat their words.
 
-In the platform, users learn "ideas" through flashcards. An idea is easily communicated information that can be atomic or consist of related entities, like a word with multiple definitions or an algorithm with its steps.
-
-The new scheduler considers several parameters for card order in a training session:
+The new scheduler considers several parameters to order cards in a training session:
 
 - Priority: Importance of avoiding errors.
 - Difficulty: Harder cards need more repetition.
-- Card type: Some cards should be sequential, while others can be shuffled.
+- Card type: Some cards need to be presented sequentially, while others can be shuffled.
 
-Parameters are shown as colored circles during training. The scheduler also considers user preferences, like avoiding pronunciation cards in public settings. Personalized difficulty levels based on a student's background are being explored using machine learning.
+The first 2 parameters are shown as colored circles during training. The scheduler also considers user preferences, like avoiding pronunciation cards in public settings. I'm running several experiments to set personalized difficulty levels based on a student's background. I think this is a promising application of AI in card scheduling.
+
+In the platform, users learn "ideas" through flashcards. An idea is easily communicated information that can be atomic or consist of related entities, like a word with multiple definitions or an algorithm with its steps. Ideas simplify the management of flashcards for users and provide a more powerful abstraction than regular cards.
 
 ### UI adaptation for trainings
 
@@ -100,11 +100,11 @@ Priority and complexity can be shown with emoji, but how can the app show at wha
 
 <div class="grid" />
 
-The app's UI adapts to show a flashcard's consolidation stage in the brain using an adaptive color palette. Colors range from red (new information) to violet (long-held memory). The entire interface changes color based on the card's consolidation stage.
+The app's UI adapts to show a flashcard's consolidation stage in the brain using an adaptive color palette. Colors range from red (new information) to violet (well known information). The entire interface changes color based on the card's consolidation stage.
 
 Difficulty affects repetition frequency, with higher difficulty leading to more repetitions and more colors. Some users intentionally set cards to high difficulty to enjoy the colors.
 
-User interaction presented challenges, such as feedback accuracy and mental exhaustion. To solve these issues, I replaced feedback buttons with gesture control. Touching the card reveals hidden information, swiping left indicates success, and swiping right indicates failure. On computers, arrow keys are used instead of swiping.
+User interaction presented some challenges, such as how to present cards on mobile that required manual scoring, and how to provide feedback when the user made a mistake for automatically scored cards. To solve these problems, I replaced self-grading buttons with gesture control. Touching the card reveals hidden information, swiping left indicates successful recall, and swiping right indicates failure. On computers, arrow keys are used instead of swiping. If the app detects an error (e.g., in a single-choice question), the correct answer is revealed with additional explanation.
 
 <div class="col" />
 
@@ -116,7 +116,7 @@ After a training session, users see their stats and receive a trophy based on pe
 
 ## Learning grammar
 
-To learn grammar on the platform, teachers create interactive essays that convey key ideas, accompanied by a "reflected essay" generated as a set of cards from interactive exercises. This method helps students retain important ideas. Each essay can be considered a 15-30 minute lesson. A collection of such essays, along with occasional extended quizzes, constitutes the course.
+To learn grammar on the platform, teachers create interactive essays that convey key ideas, accompanied by a "reflected essay" generated as a set of cards from interactive exercises. This method helps students retain important ideas. Each essay can be considered a 10-30 minute lesson. A collection of such essays, along with occasional extended quizzes, constitutes the course.
 
 <div class="grid" />
 
@@ -128,7 +128,7 @@ In the video a user opens a lesson, reads through it and then answers questions 
 
 When reviewing exercises, explanations are provided for incorrect answers. As students complete the lesson exercises, statistics are collected, similar to training completion. Courses are integrated with the memory system, and all interactive exercises will be shown as flashcards during spaced repetition.
 
-Redundancy is encouraged to achieve elaborate encoding, helping learners form multiple associations with the taught ideas. When a user forgets the answer to a question: In a typical spaced-repetition memory system, this would be dealt with by decreasing the time interval until the question is revisited.
+Redundancy is encouraged to achieve elaborate encoding, helping learners form multiple associations with the taught ideas. If a user forgets the answer to a question, this usually results in a decrease in the time interval until the question is revisited.
 
 <div class="end" />
 
@@ -140,9 +140,9 @@ The platform allows teachers to create learning tracks that include entire cours
 
 While working with tracks, courses, and ideas, the platform collects statistics for teachers. Machine learning models use this data to make recommendations for content improvement. For example, it can identify areas where many students struggle, suggesting additional explanations. It can also compare student performance and predict outcomes like exam grades.
 
-Students can use these statistics to focus on mistakes and problem areas. Those who prefer to avoid interval repetition can request the system to generate tests for short-term preparation before exams.
+Students can use these statistics to focus on mistakes and problem areas. Those who prefer to avoid spaced repetition can request the system to generate tests for short-term preparation before exams.
 
-The aforementioned activities are described briefly, as each deserves a comprehensive analysis. The description of free-response questions, fill-in-the-blank cards, reflection, peer review, and other feedback methods is also omitted.
+The aforementioned activities are described briefly, as each deserves a comprehensive analysis. The platform also includes these features: open-ended questions, fill-in-the-blank cards, reflection, peer review, which I won't describe here.
 
 When teachers write essays, they can ask the AI to generate questions related to the essay. This simplifies lesson preparation, particularly when creating questions to test students' understanding of a rule in various contexts. Students can also ask the AI to clarify any unclear points in the lesson.
 
@@ -156,7 +156,7 @@ Collaborative content creation is the only economically viable solution for orga
 
 Students can participate in learning communities where they collaborate, learn together, and create content for one another. Teachers can also create and manage their communities, working together to develop high-quality materials. Openly available educational content is a significant advantage, as it eliminates the dissatisfaction some students experience when they feel they have wasted money on paid content.
 
-With open access to educational materials, teachers can still earn money through microtransactions and auctions for their services, such as answering questions, providing feedback, and conducting consultations and webinars. Microtransactions offer an affordable option for students, while auctions benefit teachers who can effectively engage with their audience.
+With open access to educational materials, teachers can still earn money through microtransactions for their services, such as answering questions, providing feedback, or conducting consultations and webinars.
 
 Collaborative learning also fosters a sense of community and motivation among students, encouraging them to learn and compete with one another in a healthy and productive manner.
 

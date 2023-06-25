@@ -28,3 +28,5 @@ preparing title.svg
 3. Delete width and height on svg
 4. Delete all linear gradients but first
 5. Rename path fill to 'gradient'
+
+recorded video in 400x700 frame

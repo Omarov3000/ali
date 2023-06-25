@@ -25,7 +25,7 @@ In this article, I will be showcasing my offline-first, full-stack framework tha
 
 Features
 
-- Low operational cost: Leveraging client-side caching and edge hosting, this framework is economical and won't drain my budget.
+- Low operational cost: Leveraging client-side caching and edge hosting, this framework is economical and budget friendly.
 - Low development cost: By implementing full-stack type safety, the framework allows for more efficient and safer code writing.
 - Great developer experience: The framework allows immediate feedback during development, reducing the need for backend mocking.
 
@@ -47,7 +47,7 @@ I used this framework to build my learning platform `Unni`, which focuses on per
 
 Let's start with an architectural overview. Clients communicate with edge functions through a sidecar process that runs parallel to the main application. This sidecar process manages server interactions and data synchronization. It retrieves data from the local cache if there have been no changes to the server data to avoid unnecessary requests. A Bloom filter is used to detect any alterations.
 
-Large data that doesn't change often is stored in an object storage system, while user-generated mutations are temporarily stored in a relational database. A scheduled task merges these mutations with the data in the object store. Protocol buffers are used to optimize the storage and reading of large objects.
+Large objects that don't change often are stored in an object storage system, while user-generated mutations are temporarily stored in a relational database. A scheduled task merges these mutations with the data in the object store. Protocol buffers are used to optimize the storage and transmission of large objects.
 
 Data that changes frequently or requires complex queries is stored in the database.
 
@@ -57,7 +57,7 @@ Data that changes frequently or requires complex queries is stored in the databa
 
 <div class="end" />
 
-The `WebRTC` protocol allows for real-time collaboration. Merge conflicts are resolved using a specialized mutation structure, and `CRDT` (Conflict-free Replicated Data Types) is employed for more intricate conflict resolution.
+The `WebRTC` protocol enables real-time collaboration. Merge conflicts are resolved using a specialized mutation structure, and `CRDT` (Conflict-free Replicated Data Types) are employed for more intricate conflict resolution.
 
 ### Client
 
@@ -81,7 +81,7 @@ const setOwner = (owner: Owner) => setCat({ owner: { owner } })
 const deleteOwner = () => setCat({ owner: null })
 ```
 
-You can pass `null` to delete a portion of the data or the entire row.
+I can pass `null` to delete a portion of the data or the entire row. Note that mutations are type safe.
 
 The `set` function creates a mutation that optimistically updates the UI. If there are other queries depending on the cat table, they will be refetched.
 
@@ -164,7 +164,7 @@ function Image({ id }: ImageProps) {
 
 ## Full Text Search
 
-To implement full text search on the edge runtime and in offline mode, I use the `orama` full-text search engine. It is a powerful and flexible engine with a WebAssembly implementation for efficient searching. I store search indexes in the object store and distribute their updates using mutations in the same way I described in the section about data queries above.
+To implement full text search on the edge runtime and in offline mode, I use the `orama` full-text search engine. It is a powerful and flexible engine with a WebAssembly implementation for efficient searching. I store search indexes in the object store and distribute their updates using mutations in the same way I described in the section about data queries above. This approach reduced the search server costs by 70% for my application.
 
 ## Push Notifications
 
