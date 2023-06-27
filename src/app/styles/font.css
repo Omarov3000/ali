@@ -12,6 +12,17 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'GTMaru';
+  src: url('/GTMaru.ttf') format('truetype');
+  font-weight: 200 1000;
+  font-style: normal;
+}
+
+.maru {
+  font-family: 'GTMaru', sans-serif;
+}
+
 body {
   font-family: 'Nunito', sans-serif;
 }

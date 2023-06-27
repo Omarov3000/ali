@@ -6,10 +6,11 @@ import { ArticleCard } from './ArticleCard'
 import { getArticleMedia } from '../articleApi'
 
 export function Cards(p: { cards: CardsData; folder?: s }) {
+  const study = p.folder?.endsWith('_case_study')
   return (
     <>
       <div className="center">
-        <h3 style={{ paddingBottom: '2rem' }}>LEARN MORE</h3>
+        <h3 style={{ paddingBottom: '2rem' }}>{study ? 'SEE MORE OF MY WORK' : 'LEARN MORE'}</h3>
       </div>
       <div className={css.wrapper}>
         <div className={css.cards}>

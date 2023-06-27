@@ -4,8 +4,26 @@ import css from './Title.module.css'
 import { ReactNode } from 'react'
 import { getArticleTitleSvg } from '../articleApi'
 
-export function Title(p: { folder: s; card: s; scaleDown?: s }) {
-  // do not paste svg into article because it will be split by \n during parsing
+interface Title {
+  folder: s
+  card: s
+  title?: s
+  scaleDown?: s
+}
+
+export function Title(p: Title) {
+  if (!p.folder.endsWith('_case_study')) return <Title_ {...p} />
+
+  return (
+    <Wrapper>
+      <img className={css.card} src={p.card} alt="" />
+      <h1 className={css.header + ' maru'} dangerouslySetInnerHTML={{ __html: p.title || '' }} />
+    </Wrapper>
+  )
+}
+
+function Title_(p: Title) {
+  // do not paste svg into text.md because it will be split by \n during parsing
   const svg = getArticleTitleSvg(p.folder)
   return (
     <Wrapper>

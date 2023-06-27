@@ -5,6 +5,7 @@ import { safeSplit } from '@/utils'
 export interface Meta {
   folder: s
   title: s
+  title2?: s
   readingTime: s
   description: s
   i: s

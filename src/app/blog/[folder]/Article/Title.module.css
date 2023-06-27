@@ -5,6 +5,16 @@
   padding-bottom: 0;
 }
 
+.header {
+  text-align: center;
+  line-height: 1;
+  font-size: clamp(3.125rem, 16.166vw + -1.058rem, 11.875rem);
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .card {
   padding-top: 1rem;
   width: max(20vw, 150px);

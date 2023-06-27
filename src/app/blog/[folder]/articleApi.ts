@@ -20,7 +20,11 @@ export const getArticleCard = (folder: s) => `/articles/${folder}/card.webp`
 export const getArticleMeta = (folder: s) => splitMetaAndMD(read(ARTICLES, folder, 'text.md')).meta
 export const listArticles = () => {
   const r: { [k in Meta['category']]: ArticleBlogInfo[] } = { big: [], libs: [], small: [] }
-  const main = [...nestedDirs(ARTICLES).map(getArticleMeta).map(metaToArticle), ...getAdditionalBlogCards()]
+  const articles = nestedDirs(ARTICLES)
+    .map(getArticleMeta)
+    .filter((m) => !m.folder.endsWith('_case_study'))
+  let main = [...articles.map(metaToArticle), ...getAdditionalBlogCards()]
+
   main.forEach((a) => r[a.category].push(a))
   Object.keys(r).forEach((k) => (r[k as Meta['category']] = sort(r[k as Meta['category']], (e) => e.i)))
   return r

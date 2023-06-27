@@ -23,7 +23,7 @@ export function Article({ blocks, meta, cards, folder, card }: Article) {
   return (
     <div className={css.wrapper} style={setVars(meta)}>
       <Back />
-      <Title folder={meta.folder} card={card} scaleDown={meta.titleScaleDown} />
+      <Title folder={meta.folder} title={meta.title2} card={card} scaleDown={meta.titleScaleDown} />
       <div className={'center ' + css.reading}>Reading time: ~{meta.readingTime} min</div>
       <article className={`${css.article} center`}>
         <Blocks blocks={blocks} folder={folder} />
